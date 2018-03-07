@@ -1,0 +1,24 @@
+{
+  "name": "rebalance",
+  "version": "0.1.0",
+  "description": "app to balance money, XP etc. stuff depending on the level",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "build": "electron-packager ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "rebalance"
+  },
+  "author": "selfdeceited",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.8.3",
+    "electron-packager": "^11.1.0"
+  },
+  "dependencies": {
+    "primer": "^10.3.0"
+  }
+}
