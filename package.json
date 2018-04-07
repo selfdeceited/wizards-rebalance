@@ -19,6 +19,6 @@
     "electron-packager": "^11.1.0"
   },
   "dependencies": {
-    "primer": "^10.3.0"
+    "jquery": "^3.3.1"
   }
 }

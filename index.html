@@ -1,20 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Balance App</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+      <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+      <div class="container" style="margin-top: 10px">
+          <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Level &lt;-> XP</h5>
+                <div class="form-group">
+                    <input type="number" class="form-control my-input" id="level" placeholder="Level" value="1">
+                    <input type="text" class="form-control my-input" id="requiredXp" placeholder="XP" disabled="disabled" value="1000">
+                  </div>
+              </div>
+            </div>
+        </div>
+      <!-- Insert this line after script imports -->
+<script>if (window.module) module = window.module;</script>
     <script>
-      // You can also require other files to run in this process
-      require('./renderer.js')
-      
-    </script>
+      const xpCalc = require('./calculations/levelToXp')
+      $(document).ready(function() {
+        $("#requiredXp").val(xpCalc.getRequiredXpForLevel(+$("#level").val()));
+          $("#level").change(function() {
+            var currentLevel = $(this).val();
+            var requiredXp = xpCalc.getRequiredXpForLevel(+currentLevel);
+            $("#requiredXp").val(requiredXp);
+          })
+      })
+
+      //require('./renderer.js')
+</script>
+
   </body>
 </html>
