@@ -25,18 +25,33 @@
                     <input type="text" class="form-control my-input" id="requiredXp" placeholder="XP" disabled="disabled" value="1000">
                   </div>
               </div>
+              <div class="card-body">
+                <h5 class="card-title">XP increase per complexity</h5>
+                <div class="form-group">
+                    <input type="number" class="form-control my-input" id="ccompl" placeholder="Level" value="1">
+                    <input type="text" class="form-control my-input" id="xpi" placeholder="XP" disabled="disabled" value="1000">
+                  </div>
+              </div>
             </div>
         </div>
       <!-- Insert this line after script imports -->
 <script>if (window.module) module = window.module;</script>
     <script>
       const xpCalc = require('./calculations/levelToXp')
+
       $(document).ready(function() {
         $("#requiredXp").val(xpCalc.getRequiredXpForLevel(+$("#level").val()));
           $("#level").change(function() {
             var currentLevel = $(this).val();
             var requiredXp = xpCalc.getRequiredXpForLevel(+currentLevel);
             $("#requiredXp").val(requiredXp);
+          })
+
+          $("#xpi").val(xpCalc.getBattleWinXpIncrease(+$("#ccompl").val()));
+          $("#ccompl").change(function() {
+            var currentCompl = $(this).val();
+            var requiredCCompl = xpCalc.getBattleWinXpIncrease(+currentCompl);
+            $("#xpi").val(requiredCCompl);
           })
       })
 
